@@ -17,23 +17,11 @@
 .menu__wrapper {
     box-sizing: border-box;
     overflow-y: scroll;
+    scrollbar-color: #131316 #2f2f37;
+    scrollbar-width: thin;
 }
 
-.menu__wrapper::-webkit-scrollbar {
-    width: 8px;
-}
 
-.menu__wrapper::-webkit-scrollbar-track {
-    background: #2F2F37;
-}
-
-.menu__wrapper::-webkit-scrollbar-thumb {
-    background: #8585AD;
-}
-
-.menu__wrapper::-webkit-scrollbar-thumb:hover {
-    background: #8585AD;
-}
 
 .list {
     margin: 0;

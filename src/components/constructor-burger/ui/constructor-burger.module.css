@@ -24,22 +24,8 @@
     box-sizing: border-box;
     overflow-y: scroll;
     height: 368px;
-}
-
-.items__wrapper::-webkit-scrollbar {
-    width: 8px;
-}
-
-.items__wrapper::-webkit-scrollbar-track {
-    background: #2F2F37;
-}
-
-.items__wrapper::-webkit-scrollbar-thumb {
-    background: #8585AD;
-}
-
-.items__wrapper::-webkit-scrollbar-thumb:hover {
-    background: #8585AD;
+    scrollbar-color: #131316 #2f2f37;
+    scrollbar-width: thin;
 }
 
 .order {

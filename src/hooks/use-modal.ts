@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-type UseModalType = (isOpen: boolean) => {
+type UseModalType = (isOpen: any) => {
     isModalOpen: boolean;
     openModal: () => void;
     closeModal: () => void;

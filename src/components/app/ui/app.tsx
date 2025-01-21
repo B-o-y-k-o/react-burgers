@@ -15,13 +15,17 @@ export function App() {
     const [ingredients, setIngredients] = useState([]);
     const [currentIngredient, setCurrentIngredient] = useState<IIngredientTypes | undefined>();
 
-    const {isModalOpen: isIngredientDetailsModalOpen,
+    const {
+        isModalOpen: isIngredientDetailsModalOpen,
         openModal: openIngredientModal,
-        closeModal: closeIngredientModal} = useModal(false);
+        closeModal: closeIngredientModal
+    } = useModal(false);
 
-    const {isModalOpen: isOrderDetailsModalOpen,
+    const {
+        isModalOpen: isOrderDetailsModalOpen,
         openModal: openOrderModal,
-        closeModal: closeOrderModel} = useModal(false);
+        closeModal: closeOrderModel
+    } = useModal(false);
 
     useEffect(() => {
         getIngredientsData()
