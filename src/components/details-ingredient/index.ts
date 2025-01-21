@@ -1,0 +1,1 @@
+export {DetailsIngredient} from './ui/details-ingredient'
