@@ -22,8 +22,8 @@
 
 .items__wrapper {
     box-sizing: border-box;
-    overflow-y: scroll;
-    height: 368px;
+    overflow-y: auto;
+    max-height: 368px;
     scrollbar-color: #131316 #2f2f37;
     scrollbar-width: thin;
 }

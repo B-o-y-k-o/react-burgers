@@ -9,9 +9,11 @@ import { IIngredientTypes, TABS } from "../../../helpers";
 interface IIngredientsBurgerProps {
     ingredients: IIngredientTypes[]
     onIngredientClick: (ingredient: IIngredientTypes) => void
+    selectIngredients?: IIngredientTypes[]
 }
 
-export const IngredientsBurger: FC<IIngredientsBurgerProps> = ({ ingredients, onIngredientClick }) => {
+export const IngredientsBurger: FC<IIngredientsBurgerProps> = (props) => {
+    const { ingredients, onIngredientClick, selectIngredients } = props
 
     const [activeTab, setActiveTab] = useState<string>(TABS.BUNS)
 
@@ -34,13 +36,13 @@ export const IngredientsBurger: FC<IIngredientsBurgerProps> = ({ ingredients, on
             </div>
             <div className={ingredientsStyle.menu__wrapper + " mb-10"}>
                 <div className={ingredientsStyle.menu}>
-                    <div id={TABS.BUNS} >
+                    <div id={TABS.BUNS}>
                         <h2 className="text text_type_main-medium">Булки</h2>
                         <ul className={ingredientsStyle.list + " pt-6 pb-15"} >
                             {buns.length && buns.map((item) => (
-                                <li key={item._id}>
-                                    <Ingredient item={item} onClick={onIngredientClick} />
-                                </li>
+                                    <li key={item._id}>
+                                        <Ingredient item={item} onClick={onIngredientClick} selectIngredients={selectIngredients}/>
+                                    </li>
                             ))}
                         </ul>
                     </div>

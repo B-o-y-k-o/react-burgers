@@ -24,7 +24,7 @@ export const Modal: FC<IModalProps> = ({ children, onClose, header }) => {
         }
     },[]);
 
-    // if(!rootModal) return;
+    if(!rootModal) return;
 
     return createPortal(
         (<>
@@ -40,6 +40,6 @@ export const Modal: FC<IModalProps> = ({ children, onClose, header }) => {
             </div>
             <Overlay onClose={onClose} />
         </>),
-        rootModal!
+        rootModal
     );
 }

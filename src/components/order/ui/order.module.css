@@ -7,3 +7,7 @@
 .number__wrapper {
     text-shadow: 0 4px 32px #3333FF80, 0 0 8px #3333FF40, 0 0 16px #3333FF40;
 }
+
+img {
+    width: 200px;
+}

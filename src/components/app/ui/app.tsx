@@ -14,6 +14,7 @@ import {useModal} from '../../../hooks'
 export function App() {
     const [ingredients, setIngredients] = useState([]);
     const [currentIngredient, setCurrentIngredient] = useState<IIngredientTypes | undefined>();
+    const [selectIngredients, setSelectIngredients] = useState<IIngredientTypes[]>([]);
 
     const {
         isModalOpen: isIngredientDetailsModalOpen,
@@ -39,6 +40,10 @@ export function App() {
 
     const handlerOpenIngredientModal = (item: IIngredientTypes) => {
         setCurrentIngredient(item)
+        if(item.type === 'bun') {
+            setSelectIngredients(prev => prev.filter((item) => item.type !== "bun"))
+        }
+        setSelectIngredients(prev => [...prev, item])
         openIngredientModal();
     }
 
@@ -48,8 +53,16 @@ export function App() {
             {ingredients.length > 0 &&
                 <main className={appStyle.main}>
                     <div className={appStyle.wrapper}>
-                        <IngredientsBurger ingredients={ingredients} onIngredientClick={handlerOpenIngredientModal}/>
-                        <ConstructorBurger ingredients={ingredients} onClick={openOrderModal}/>
+                        <IngredientsBurger
+                            ingredients={ingredients}
+                            onIngredientClick={handlerOpenIngredientModal}
+                            selectIngredients={selectIngredients}
+                        />
+                        <ConstructorBurger
+                            selectIngredients={selectIngredients}
+                            onClick={openOrderModal}
+                            setSelectedIngredients={setSelectIngredients}
+                        />
                         {isIngredientDetailsModalOpen &&
                             <Modal onClose={closeIngredientModal} header={"Детали ингредиента"}>
                                 <DetailsIngredient item={currentIngredient}/>
