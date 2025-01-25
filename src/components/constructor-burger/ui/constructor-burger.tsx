@@ -37,15 +37,26 @@ export const BurgerConstructor: FC<IBurgerConstructorProps> = (props) => {
     const otherIngredients: IIngredientTypes[] | undefined = mains.concat(sauces);
 
     const removeIngredients = () => {
-        // @ts-ignore
         const id: string | undefined = refIngredient?.current?.attributes?.dataid?.value
         setSelectedIngredients(selectIngredients.filter((item) => item._id !== id))
     }
 
+    useEffect(() => {
+        const elements: HTMLCollectionOf<Element> = document.getElementsByClassName('constructor-element__row')
+        if(!buns.length) {
+            elements[0].style.display = 'none'
+            elements[1].style.display = 'none'
+
+        }else{
+            elements[0].style.display = ''
+            elements[1].style.display = ''
+        }
+    }, [buns.length]);
+
     return (
         <section className={constructorStyle.wrapper + " pr-5 pl-5"}  style={{width: '488px'}}>
             <div className={"pl-4 pr-8 pt-25"}>
-                <div className={"pl-8 pt-4 pb-4"}>
+                <div className={constructorStyle.container}>
                     <ConstructorElement
                         type="top"
                         isLocked={true}
@@ -58,7 +69,7 @@ export const BurgerConstructor: FC<IBurgerConstructorProps> = (props) => {
                     <div className={constructorStyle.items__wrapper}>
                         <ul className={constructorStyle.list}>
                             {otherIngredients.map((item) => (
-                                <li className={constructorStyle.item} key={item._id} ref={refIngredient} dataid={item._id}>
+                                <li className={constructorStyle.item } key={item._id} ref={refIngredient} dataid={item._id}>
                                     <DragIcon type="primary"/>
                                     <ConstructorElement
                                         text={item.name}
@@ -71,7 +82,7 @@ export const BurgerConstructor: FC<IBurgerConstructorProps> = (props) => {
                         </ul>
                     </div>
                 }
-                <div className={"pl-8 pt-4 pb-4"} style={{width: '488px'}}>
+                <div className={constructorStyle.container}>
                     <ConstructorElement
                         type="bottom"
                         isLocked={true}
