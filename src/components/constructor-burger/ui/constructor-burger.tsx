@@ -4,13 +4,13 @@ import constructorStyle from './constructor-burger.module.css';
 import { ConstructorElement, CurrencyIcon, Button, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { IIngredientTypes } from '../../../helpers';
 
-interface IConstructorBurgerProps {
+interface IBurgerConstructorProps {
     selectIngredients: IIngredientTypes[]
     setSelectedIngredients: Dispatch<SetStateAction<IIngredientTypes[]>>
     onClick: (() => void) | ((e: SyntheticEvent<Element, Event>) => void)
 }
 
-export const ConstructorBurger: FC<IConstructorBurgerProps> = (props) => {
+export const BurgerConstructor: FC<IBurgerConstructorProps> = (props) => {
     const { selectIngredients, onClick, setSelectedIngredients } = props
     const [price, setPrice] = useState<number>(0)
 

@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
 import appStyle from './app.module.css';
 import {AppHeader} from '../../app-header';
-import {IngredientsBurger} from '../../ingredients-burger'
-import {ConstructorBurger} from '../../constructor-burger/ui/constructor-burger.tsx'
+import {BurgerConstructor} from '../../constructor-burger/ui/constructor-burger.tsx'
 import {Modal} from '../../modal'
-import {DetailsIngredient} from '../../details-ingredient'
-import {Order} from '../../order'
 
 import { getIngredientsData, IIngredientTypes } from "../../../helpers";
 import {useModal} from '../../../hooks'
-
+import {BurgerIngredients} from '../../ingredients-burger/ui/ingredients-burger.tsx'
+import {IngredientsDetails} from '../../details-ingredient/ui/details-ingredient.tsx'
+import {OrderDetails} from '../../order/ui/order.tsx'
 
 export function App() {
     const [ingredients, setIngredients] = useState([]);
@@ -33,9 +32,7 @@ export function App() {
             .then(res => {
                 setIngredients(res.data)
             })
-            .catch(err => {
-                console.error(err);
-            });
+            .catch(console.error);
     }, []);
 
     const handlerOpenIngredientModal = (item: IIngredientTypes) => {
@@ -53,23 +50,23 @@ export function App() {
             {ingredients.length > 0 &&
                 <main className={appStyle.main}>
                     <div className={appStyle.wrapper}>
-                        <IngredientsBurger
+                        <BurgerIngredients
                             ingredients={ingredients}
                             onIngredientClick={handlerOpenIngredientModal}
                             selectIngredients={selectIngredients}
                         />
-                        <ConstructorBurger
+                        <BurgerConstructor
                             selectIngredients={selectIngredients}
                             onClick={openOrderModal}
                             setSelectedIngredients={setSelectIngredients}
                         />
                         {isIngredientDetailsModalOpen &&
                             <Modal onClose={closeIngredientModal} header={"Детали ингредиента"}>
-                                <DetailsIngredient item={currentIngredient}/>
+                                <IngredientsDetails item={currentIngredient}/>
                             </Modal>}
                         {isOrderDetailsModalOpen &&
                             <Modal onClose={closeOrderModel} >
-                                <Order />
+                                <OrderDetails />
                             </Modal>
                         }
                     </div>

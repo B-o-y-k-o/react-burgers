@@ -1,7 +1,7 @@
 import orderStyle from './order.module.css';
 import okImage from '../../../images/order-ok.svg';
 
-export const Order = () => {
+export const OrderDetails = () => {
     return (
         <div className={orderStyle.wrapper + " mt-30"}>
             <h2 className={orderStyle.number__wrapper + ' text text_type_digits-large mb-8'}>034536</h2>

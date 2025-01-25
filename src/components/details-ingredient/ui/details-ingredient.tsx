@@ -2,11 +2,11 @@ import detailsStyle from './details-ingredient.module.css';
 import { IIngredientTypes } from '../../../helpers';
 import {FC} from 'react'
 
-interface IDetailsIngredientProps {
+interface IIngredientsDetailsProps {
     item?: IIngredientTypes
 }
 
-export const DetailsIngredient: FC<IDetailsIngredientProps> = ({ item }) => {
+export const IngredientsDetails: FC<IIngredientsDetailsProps> = ({ item }) => {
     if (!item) return
 
     const { image_large, name, calories, fat, proteins, carbohydrates } = item;

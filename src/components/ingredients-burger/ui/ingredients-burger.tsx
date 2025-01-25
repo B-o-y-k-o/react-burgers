@@ -6,13 +6,13 @@ import {Ingredient} from "../../ingredient";
 import { IIngredientTypes, TABS } from "../../../helpers";
 
 
-interface IIngredientsBurgerProps {
+interface IBurgerIngredientsProps {
     ingredients: IIngredientTypes[]
     onIngredientClick: (ingredient: IIngredientTypes) => void
     selectIngredients?: IIngredientTypes[]
 }
 
-export const IngredientsBurger: FC<IIngredientsBurgerProps> = (props) => {
+export const BurgerIngredients: FC<IBurgerIngredientsProps> = (props) => {
     const { ingredients, onIngredientClick, selectIngredients } = props
 
     const [activeTab, setActiveTab] = useState<string>(TABS.BUNS)
