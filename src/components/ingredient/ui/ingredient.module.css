@@ -8,6 +8,21 @@
     cursor: pointer;
 }
 
+.info__wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 24px;
+    right: 120px;
+    border-radius: 50%;
+    border: 2px solid #131316;
+}
+
+.info__wrapper:hover{
+    border-color: #4C4CFF;
+}
+
 .price__wrapper {
     display: flex;
     align-items: center;

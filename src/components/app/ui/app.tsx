@@ -37,11 +37,14 @@ export function App() {
 
     const handlerOpenIngredientModal = (item: IIngredientTypes) => {
         setCurrentIngredient(item)
+        openIngredientModal();
+    }
+
+    const handlerAddIngredientInBurger = (item: IIngredientTypes) => {
         if(item.type === 'bun') {
             setSelectIngredients(prev => prev.filter((item) => item.type !== "bun"))
         }
         setSelectIngredients(prev => [...prev, item])
-        openIngredientModal();
     }
 
     return (
@@ -52,7 +55,8 @@ export function App() {
                     <div className={appStyle.wrapper}>
                         <BurgerIngredients
                             ingredients={ingredients}
-                            onIngredientClick={handlerOpenIngredientModal}
+                            onIngredientClick={handlerAddIngredientInBurger}
+                            onInfoClick={handlerOpenIngredientModal}
                             selectIngredients={selectIngredients}
                         />
                         <BurgerConstructor

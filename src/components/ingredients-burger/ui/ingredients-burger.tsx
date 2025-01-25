@@ -9,11 +9,12 @@ import { IIngredientTypes, TABS } from "../../../helpers";
 interface IBurgerIngredientsProps {
     ingredients: IIngredientTypes[]
     onIngredientClick: (ingredient: IIngredientTypes) => void
+    onInfoClick: (ingredient: IIngredientTypes) => void
     selectIngredients?: IIngredientTypes[]
 }
 
 export const BurgerIngredients: FC<IBurgerIngredientsProps> = (props) => {
-    const { ingredients, onIngredientClick, selectIngredients } = props
+    const { ingredients, onIngredientClick, selectIngredients, onInfoClick } = props
 
     const [activeTab, setActiveTab] = useState<string>(TABS.BUNS)
 
@@ -39,31 +40,56 @@ export const BurgerIngredients: FC<IBurgerIngredientsProps> = (props) => {
                     <div id={TABS.BUNS}>
                         <h2 className="text text_type_main-medium">Булки</h2>
                         <ul className={ingredientsStyle.list + " pt-6 pb-15"} >
-                            {buns.length && buns.map((item) => (
+                            {buns.length && buns.map((item) => {
+                                const count = selectIngredients?.reduce((count, ingredient) => {
+                                    if(item._id === ingredient._id) {
+                                         count = count + 1
+                                    }
+                                    return count
+                                }, 0)
+
+                                return (
                                     <li key={item._id}>
-                                        <Ingredient item={item} onClick={onIngredientClick} selectIngredients={selectIngredients}/>
+                                        <Ingredient item={item} onInfoClick={onInfoClick} onClick={onIngredientClick} count={count || 0}/>
                                     </li>
-                            ))}
+                                )
+                            })}
                         </ul>
                     </div>
                     <div id={TABS.SAUCES} >
                         <h2 className="text text_type_main-medium">Соусы</h2>
                         <ul className={ingredientsStyle.list + " pt-6 pb-15"} >
-                            {sauces.length && sauces.map((item) => (
-                                <li key={item._id}>
-                                    <Ingredient item={item} onClick={onIngredientClick} />
-                                </li>
-                            ))}
+                            {sauces.length && sauces.map((item) => {
+                                const count = selectIngredients?.reduce((count, ingredient) => {
+                                    if(item._id === ingredient._id) {
+                                        count = count + 1
+                                    }
+                                    return count
+                                }, 0)
+
+                                return (
+                                    <li key={item._id}>
+                                        <Ingredient item={item} onInfoClick={onInfoClick} onClick={onIngredientClick}
+                                                    count={count || 0}/>
+                                    </li>)
+                            })}
                         </ul>
                     </div>
                     <div id={TABS.MAINS}>
                         <h2 className="text text_type_main-medium">Начинки</h2>
                         <ul className={ingredientsStyle.list + " pt-6 pb-15"} >
-                            {mains.length && mains.map((item) => (
-                                <li key={item._id}>
-                                    <Ingredient item={item} onClick={onIngredientClick}  />
-                                </li>
-                            ))}
+                            {mains.length && mains.map((item) => {
+                                const count = selectIngredients?.reduce((count, ingredient) => {
+                                    if(item._id === ingredient._id) {
+                                        count = count + 1
+                                    }
+                                    return count
+                                }, 0)
+
+                                return (<li key={item._id}>
+                                    <Ingredient item={item} onInfoClick={onInfoClick} onClick={onIngredientClick} count={count || 0}/>
+                                </li>)
+                        })}
                         </ul>
                     </div>
                 </div>
