@@ -54,7 +54,7 @@ export const BurgerConstructor: FC<IBurgerConstructorProps> = (props) => {
     }, [buns.length]);
 
     return (
-        <section className={constructorStyle.wrapper + " pr-5 pl-5"}  style={{width: '488px'}}>
+        <section className={constructorStyle.wrapper + " pr-5 pl-5"}>
             <div className={"pl-4 pr-8 pt-25"}>
                 <div className={constructorStyle.container}>
                     <ConstructorElement
